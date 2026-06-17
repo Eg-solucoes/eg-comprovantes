@@ -188,7 +188,7 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 </div>
 
 <div class="agend-strip">
-  <div class="agend-info" id="agend-info">Relatorio sera enviado as 16:30</div>
+  <div class="agend-info" id="agend-info">Relatorio sera enviado as 14:30</div>
   <div class="agend-badge aguardando" id="agend-badge">Aguardando</div>
 </div>
 
@@ -410,7 +410,7 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
     <div style="background:#1a2535;border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px;margin-bottom:4px">
       <span style="font-size:1.2rem">⏰</span>
       <div>
-        <div style="font-size:0.78rem;font-weight:700;color:#5BCF85" id="info-gatilho">E-mail enviado automaticamente pelo servidor as 16:30</div>
+        <div style="font-size:0.78rem;font-weight:700;color:#5BCF85" id="info-gatilho">E-mail enviado automaticamente pelo servidor as 14:30</div>
         <div style="font-size:0.7rem;color:rgba(255,255,255,0.5)" id="info-sub">Envie agora para garantir que os dados subam para a planilha</div>
       </div>
     </div>
@@ -435,10 +435,10 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 </div>
 
 <script>
-var APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbynmXEDi7t9Dk_LV3l0KoqdnT_0YLdUMONVAwYK8N-5l6Yh7Hbm6EWXIp2D5sSlcQDx/exec';
-var HORA_CORTE=16,MIN_CORTE=30;
+var APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbz05QmIwFYzRMh8pOOfMG31nvkObm-64dhh46xQIeCehGNQEmov3Kp_nllR6XDNxAHlwQ/exec';
+var HORA_CORTE=14,MIN_CORTE=30;
 var RASCUNHO_KEY='eg_rascunho_v1';
-var SHEET_ID='1RjeO0_ssBbkkaNEmqWvxq2e_iM1iIjOiXkInOKjoELs';
+var SHEET_ID='1r6_iC_tmQPusSAuvPwiUVDwJQp7OjxvO9fOqNR4-he8';
 var SHEET_SALDO_GID=''; // aba Saldo Cirvaiha
 
 // Busca saldo real da planilha Google (publicada)
@@ -523,15 +523,15 @@ function atualizarBadge(){
   document.getElementById('strip-horario').textContent='Horario: '+hora+':'+min;
   if(apos){
     badge.className='horario-badge depois';
-    document.getElementById('badge-texto').textContent='Apos 16:30 — relatorio vai para AMANHA ('+fmtData(getDataRelatorio())+')';
-    document.getElementById('info-gatilho').textContent='Apos 16:30 — comprovante vai para relatorio de AMANHA';
+    document.getElementById('badge-texto').textContent='Apos 14:30 — relatorio vai para AMANHA ('+fmtData(getDataRelatorio())+')';
+    document.getElementById('info-gatilho').textContent='Apos 14:30 — comprovante vai para relatorio de AMANHA';
     document.getElementById('info-gatilho').style.color='#FFB347';
   } else {
     badge.className='horario-badge antes';
     var rh=HORA_CORTE-hora,rm=MIN_CORTE-h.getMinutes();
     if(rm<0){rh--;rm+=60;}
-    document.getElementById('badge-texto').textContent='Antes das 16:30 — relatorio de HOJE ('+rh+'h'+String(rm).padStart(2,'0')+'min restantes)';
-    document.getElementById('info-gatilho').textContent='E-mail enviado automaticamente pelo servidor as 16:30';
+    document.getElementById('badge-texto').textContent='Antes das 14:30 — relatorio de HOJE ('+rh+'h'+String(rm).padStart(2,'0')+'min restantes)';
+    document.getElementById('info-gatilho').textContent='E-mail enviado automaticamente pelo servidor as 14:30';
     document.getElementById('info-gatilho').style.color='#5BCF85';
   }
 }
@@ -850,7 +850,7 @@ async function enviarRelatorio(forcarAmanha){
 
   var porTipo={};
   estado.gastos.forEach(function(g){porTipo[g.tipo]=(porTipo[g.tipo]||0)+g.valor;});
-  var avisoRel=apos?'<br><span style="display:block;margin-top:6px;padding:5px 10px;background:#FFF3CD;border-radius:8px;font-size:0.8rem;color:#856404">Enviado apos 16:30 — consta no relatorio de '+fmtData(dataRel)+'</span>':'';
+  var avisoRel=apos?'<br><span style="display:block;margin-top:6px;padding:5px 10px;background:#FFF3CD;border-radius:8px;font-size:0.8rem;color:#856404">Enviado apos 14:30 — consta no relatorio de '+fmtData(dataRel)+'</span>':'';
   document.getElementById('resumo-enviado').innerHTML=
     '<strong>Data:</strong> '+fmtData(data)+'<br>'
     +'<strong>Tecnico:</strong> '+(resp||'Nao informado')+'<br>'
